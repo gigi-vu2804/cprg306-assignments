@@ -27,6 +27,9 @@ export default function Home() {
                 Gigi - Shopping Planner
               </Link>
             </li>
+            <li className={liStyling}>
+              <Link href={`/gigi-task-management`}>Gigi - Task Management</Link>
+            </li>
           </ul>
         </div>
       </div>

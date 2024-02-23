@@ -20,19 +20,18 @@
 // }
 "use client";
 import React from "react";
-import ShoppingList from "./shopping-list";
-import Link from "next/link.js";
+import TaskManagement from "./task-management";
 
 export default function Page() {
   return (
     <main className="bg-amber-950">
       <div className="flex justify-between items-center w-full px-2 py-2">
         <h1 className="text-center text-3xl text-orange-200 font-bold flex-grow">
-          Shopping Planner
+          Task Management
         </h1>
         <div></div>
       </div>
-      <ShoppingList />
+      <TaskManagement />
     </main>
   );
 }
