@@ -22,17 +22,24 @@
 import React from "react";
 import TaskManagement from "./task-management";
 import Sidebar from "./side-bar";
+import Head from "next/head";
 
 export default function Page() {
   return (
     <div className="bg-amber-950 flex">
+      <Head>
+        <title>Project Management Application</title>
+        <meta
+          name="description"
+          content="Manage your tasks efficiently with our Task Management Application."
+        />
+        <meta
+          name="keywords"
+          content="task management, productivity, project management, tasks, team collaboration"
+        />
+      </Head>
       <Sidebar />
       <main className="flex-grow">
-        <div className="flex justify-between items-center w-full px-2 py-2">
-          <h1 className="text-center text-3xl text-orange-200 font-bold flex-grow">
-            Task Management
-          </h1>
-        </div>
         <TaskManagement />
       </main>
     </div>

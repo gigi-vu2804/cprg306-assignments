@@ -20,8 +20,7 @@ export default function Sidebar() {
       {isExpanded && (
         <>
           <Link href={`/`}>Home</Link>
-          <Link href={`/task-management`}>Tasks Dashboard</Link>
-          {/* Add more navigation links as needed */}
+          <Link href={`/gigi-task-management`}>Tasks Dashboard</Link>
         </>
       )}
     </div>

@@ -65,18 +65,26 @@ export default function TaskManagement() {
   };
 
   return (
-    <div className="flex flex-row gap-6 justify-center mt-8 mx-auto h-full w-full">
-      <NewTask onAddTask={addTask} />
-      <PendingTask
-        tasks={tasks.filter((task) => task.status === "Pending")}
-        onUpdateTaskStatus={onUpdateTaskStatus}
-        onDeleteTask={deleteTask}
-      />
-      <CompletedTask
-        tasks={tasks.filter((task) => task.status === "Completed")}
-        onDeleteTask={deleteTask}
-        onUpdateTaskStatus={onUpdateTaskStatus}
-      />
-    </div>
+    <>
+      <div className="flex justify-between items-center w-full px-2 py-2">
+        <h1 className="text-center text-3xl text-orange-200 font-bold flex-grow">
+          Tasks Management
+        </h1>
+        <div></div>
+      </div>
+      <div className="flex flex-row gap-6 justify-center mt-8 mx-auto h-full w-full">
+        <NewTask onAddTask={addTask} />
+        <PendingTask
+          tasks={tasks.filter((task) => task.status === "Pending")}
+          onUpdateTaskStatus={onUpdateTaskStatus}
+          onDeleteTask={deleteTask}
+        />
+        <CompletedTask
+          tasks={tasks.filter((task) => task.status === "Completed")}
+          onDeleteTask={deleteTask}
+          onUpdateTaskStatus={onUpdateTaskStatus}
+        />
+      </div>
+    </>
   );
 }
