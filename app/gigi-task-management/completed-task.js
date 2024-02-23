@@ -3,7 +3,8 @@ export default function CompletedTask({
   onDeleteTask,
   onUpdateTaskStatus,
 }) {
-  const taskBoxStyling = "p-2 mx-4 mt-2 mb-4 bg-orange-200 max-w-lg rounded-lg";
+  const taskBoxStyling =
+    "p-2 mx-4 mt-2 mb-4 bg-orange-200 max-w-lg rounded-lg shadow-sm";
   const taskNameStyling = "text-base font-bold text-amber-900";
   const taskDetailStyling = "text-sm text-amber-900 italic";
 
@@ -27,13 +28,13 @@ export default function CompletedTask({
               <div className="flex flex-col">
                 <button
                   onClick={() => onDeleteTask(task.name)}
-                  className="text-sm py-2 mt-2 px-6 w-full bg-blue-500 text-white rounded hover:bg-red-700 transition duration-150 ease-in-out"
+                  className="text-sm py-2 mt-2 px-6 w-full bg-blue-500 text-white rounded hover:bg-red-700 transition cursor-pointer duration-150 ease-in-out"
                 >
                   Delete
                 </button>
                 <button
                   onClick={() => onUpdateTaskStatus(task.name, "Pending")}
-                  className="text-sm py-2 mt-2 px-6 w-full bg-yellow-500 text-white rounded hover:bg-yellow-700 transition duration-150 ease-in-out"
+                  className="text-sm py-2 mt-2 px-6 w-full bg-yellow-500 text-white rounded hover:bg-yellow-700 transition cursor-pointer duration-150 ease-in-out"
                 >
                   Pending
                 </button>
