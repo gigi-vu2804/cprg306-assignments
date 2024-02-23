@@ -1,4 +1,8 @@
-export default function PendingTask({ tasks, onDeleteTask }) {
+export default function PendingTask({
+  tasks,
+  onDeleteTask,
+  onUpdateTaskStatus,
+}) {
   const taskBoxStyling = "p-2 mx-4 mt-2 mb-4 bg-orange-200 max-w-lg rounded-lg";
   const taskNameStyling = "text-base font-bold text-amber-900";
   const taskDetailStyling = "text-sm text-amber-900 italic";
@@ -10,7 +14,7 @@ export default function PendingTask({ tasks, onDeleteTask }) {
         {tasks.map((task, index) => (
           <li key={index} className={taskBoxStyling}>
             <div className="flex flex-row gap-6 items-center">
-              <div className="flex-1">
+              <div className="flex-1 min-w-20">
                 <h2 className={taskNameStyling}>{task.name}</h2>
                 <div className={`${taskDetailStyling} flex`}>
                   Due: {task.dueDate}

@@ -43,6 +43,16 @@ export default function TaskManagement() {
     setTasks(tasks.filter((task) => task.name !== taskName));
   };
 
+  const onUpdateTaskStatus = (taskName, newStatus) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.name === taskName) {
+          return { ...task, status: newStatus };
+        }
+        return task;
+      })
+    );
+  };
   const updateTaskStatus = (taskName, newStatus) => {
     setTasks(
       tasks.map((task) => {
@@ -59,13 +69,13 @@ export default function TaskManagement() {
       <NewTask onAddTask={addTask} />
       <PendingTask
         tasks={tasks.filter((task) => task.status === "Pending")}
-        onUpdateTaskStatus={updateTaskStatus}
+        onUpdateTaskStatus={onUpdateTaskStatus}
         onDeleteTask={deleteTask}
       />
       <CompletedTask
         tasks={tasks.filter((task) => task.status === "Completed")}
-        onUpdateTaskStatus={updateTaskStatus}
         onDeleteTask={deleteTask}
+        onUpdateTaskStatus={onUpdateTaskStatus}
       />
     </div>
   );
