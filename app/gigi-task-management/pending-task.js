@@ -33,7 +33,7 @@ export default function PendingTask({
                 </button>
                 <button
                   onClick={() => onUpdateTaskStatus(task.name, "Completed")}
-                  className="text-sm py-2 mt-2 px-6 w-fullpy-2 px-4 bg-green-500 text-white rounded hover:bg-green-700"
+                  className="text-sm mt-2 w-full py-2 px-4 bg-green-500 text-white rounded hover:bg-green-700"
                 >
                   Complete
                 </button>
