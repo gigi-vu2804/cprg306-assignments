@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NewTask from "./new-task";
 import PendingTask from "./pending-task";
-import CompletedTask from "./completed-task.js";
+import CompletedTask from "./completed-task";
 
 export default function TaskManagement() {
   const [tasks, setTasks] = useState([
@@ -43,16 +43,6 @@ export default function TaskManagement() {
     setTasks(tasks.filter((task) => task.name !== taskName));
   };
 
-  const onUpdateTaskStatus = (taskName, newStatus) => {
-    setTasks(
-      tasks.map((task) => {
-        if (task.name === taskName) {
-          return { ...task, status: newStatus };
-        }
-        return task;
-      })
-    );
-  };
   const updateTaskStatus = (taskName, newStatus) => {
     setTasks(
       tasks.map((task) => {
@@ -63,6 +53,16 @@ export default function TaskManagement() {
       })
     );
   };
+  // const updateTaskStatus = (taskName, newStatus) => {
+  //   setTasks(
+  //     tasks.map((task) => {
+  //       if (task.name === taskName) {
+  //         return { ...task, status: newStatus };
+  //       }
+  //       return task;
+  //     })
+  //   );
+  // };
 
   return (
     <>
@@ -72,17 +72,19 @@ export default function TaskManagement() {
         </h1>
         <div></div>
       </div>
-      <div className="flex flex-row gap-6 justify-center mt-8 mx-auto h-full w-full">
+      <div>
         <NewTask onAddTask={addTask} />
+      </div>
+      <div className="flex flex-row gap-6 justify-center mt-8 mx-auto h-full w-full">
         <PendingTask
           tasks={tasks.filter((task) => task.status === "Pending")}
-          onUpdateTaskStatus={onUpdateTaskStatus}
+          onUpdateTaskStatus={updateTaskStatus}
           onDeleteTask={deleteTask}
         />
         <CompletedTask
           tasks={tasks.filter((task) => task.status === "Completed")}
           onDeleteTask={deleteTask}
-          onUpdateTaskStatus={onUpdateTaskStatus}
+          onUpdateTaskStatus={updateTaskStatus}
         />
       </div>
     </>

@@ -20,8 +20,7 @@
 // }
 "use client";
 import React from "react";
-import TaskManagement from "./task-management";
-import Sidebar from "./side-bar";
+import TaskManagement from "./components/task-management";
 import Head from "next/head";
 
 export default function Page() {
@@ -38,7 +37,6 @@ export default function Page() {
           content="task management, productivity, project management, tasks, team collaboration"
         />
       </Head>
-      <Sidebar />
       <main className="flex-grow">
         <TaskManagement />
       </main>

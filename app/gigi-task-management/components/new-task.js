@@ -28,32 +28,28 @@ export default function NewTask({ onAddTask }) {
   };
 
   return (
-    <div className="ml-4 flex-1 flex flex-col items-center max-w-sm">
+    <div className="ml-4 flex-1 flex flex-col items-center w-full">
       <h3 className="text-orange-200 text-center underline">Add New Task</h3>
       <form
         onSubmit={handleSubmit}
         className="p-2 m-4 mt-2 bg-orange-200 max-w-sm w-full rounded-lg border-amber-800 border-4"
       >
-        <div className="mb-2">
+        <div className="flex-col justify-between mb-2">
           <input
             required
-            className={`w-full mt-3 ${inputStyling}`}
+            className={`mr-2 ${inputStyling}`} // Adjusted for margin-right
             type="text"
             placeholder="Task name"
             value={taskName}
             onChange={(e) => setTaskName(e.target.value)}
           />
-        </div>
-        <div className="mb-2">
           <input
             required
-            className={`w-full ${inputStyling}`}
+            className={inputStyling}
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-        </div>
-        <div className="mb-2 flex justify-between">
           <select
             required
             className={`w-full mr-2 ${inputStyling}`}
@@ -83,8 +79,9 @@ export default function NewTask({ onAddTask }) {
             <option value="Taylor">Taylor</option>
           </select>
         </div>
+
         <button
-          className="bg-amber-950 text-white rounded-lg w-full mt-4 py-2 px-4 font-semibold hover:bg-blue-500 transition duration-150 ease-in-out"
+          className="bg-amber-950 text-white rounded-lg w-full py-2 px-4 font-semibold hover:bg-blue-500 transition duration-150 ease-in-out"
           type="submit"
         >
           Add Task
