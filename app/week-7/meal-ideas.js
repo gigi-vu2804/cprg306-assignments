@@ -73,7 +73,7 @@ export default function MealIdeas({ ingredient }) {
                   key={index}
                   className="flex p-2 m-2 bg-orange-200 max-w-sm rounded cursor-pointer hover:bg-blue-500 transition duration-150 ease-in-out"
                 >
-                  <p className="ml-1 text-lg font-bold text-amber-900 underline">
+                  <p className="ml-1 text-lg font-bold text-amber-900 ">
                     {meal.strMeal}
                   </p>
                 </li>
