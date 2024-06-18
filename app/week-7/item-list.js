@@ -11,9 +11,9 @@ export default function ItemList({
   setSelectedSort,
   onItemSelect,
 }) {
-  const itemBoxStyling = "p-2 m-4 bg-orange-200 max-w-sm cursor-pointer";
-  const itemNameStyling =
-    "text-xl font-bold text-amber-900 hover:text-blue-600 transition duration-150 ease-in-out";
+  const itemBoxStyling =
+    "p-2 m-4 bg-orange-200 max-w-sm rounded cursor-pointer round hover:bg-blue-500 transition duration-150 ease-in-out";
+  const itemNameStyling = "text-xl font-bold text-amber-900";
   const itemDescriptionStyling = "text-sm text-amber-900 italic";
 
   // Function to sort items as Grouped Category

@@ -1,4 +1,3 @@
-// page.js
 "use client";
 import NewItem from "./new-item.js";
 import Item from "./item.js";
@@ -37,24 +36,30 @@ export default function Page() {
   };
 
   return (
-    <main className="bg-amber-950 p-2 ">
-      <div className="mx-w-sm w-full">
+    <main className="bg-amber-950 p-2 flex flex-col items-center">
+      <div className="w-full">
         <h1 className="text-3xl text-orange-200 font-bold m-2">
           Shopping List
         </h1>
-        <h2 className="text-xl text-orange-200 font-bold m-2">Add New Item</h2>
-        <NewItem onAddItem={handleAddItem} />
-        <div className="flex">
-          <Item
-            items={items}
-            onSort={handleSort}
-            displayMode={displayMode}
-            setDisplayMode={setDisplayMode}
-            selectedSort={selectedSort}
-            setSelectedSort={setSelectedSort}
-            onItemSelect={handleItemSelect}
-          />
-          <MealIdeas ingredient={selectedItemName} />
+        <div className="flex flex-row gap-2">
+          <div className="flex-1">
+            <h2 className="text-xl text-orange-200 font-bold m-2">
+              Add New Item
+            </h2>
+            <NewItem onAddItem={handleAddItem} />
+            <Item
+              items={items}
+              onSort={handleSort}
+              displayMode={displayMode}
+              setDisplayMode={setDisplayMode}
+              selectedSort={selectedSort}
+              setSelectedSort={setSelectedSort}
+              onItemSelect={handleItemSelect}
+            />
+          </div>
+          <div className="flex-1">
+            <MealIdeas ingredient={selectedItemName} />
+          </div>
         </div>
       </div>
     </main>

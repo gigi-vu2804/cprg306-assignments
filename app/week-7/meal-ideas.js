@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -18,8 +19,26 @@ const fetchMealIdeas = async (ingredient) => {
   }
 };
 
+const fetchMealIngredients = async (mealId) => {
+  try {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+    );
+    if (!response.ok) {
+      throw new Error("Error fetching meal ingredients");
+    }
+    const data = await response.json();
+    console.log("data: ", data);
+    return data.fullMeals || [];
+  } catch (e) {
+    console.error("Error fetching meal ingredients: ", e);
+    return [];
+  }
+};
+
 export default function MealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
   const loadMealIdeas = async () => {
     const mealIdeas = await fetchMealIdeas(ingredient);
@@ -31,12 +50,12 @@ export default function MealIdeas({ ingredient }) {
   }, [ingredient]);
 
   return (
-    <div className="meal-ideas p-2 m-4 mt-8 ml-8">
+    <div className="meal-ideas p-2">
       <div className="ml-3">
         <h3 className="text-orange-200 text-lg">Meal Ideas</h3>
         <p className="text-orange-200 text-lg">Ingredient: {ingredient}</p>
 
-        {ingredient == "" ? (
+        {ingredient === "" ? (
           <p className="text-orange-200 italic text-m">
             <br></br>Note: No meal ideas available! Select an ingredient on the
             left to view meal ideas.
@@ -44,24 +63,21 @@ export default function MealIdeas({ ingredient }) {
         ) : (
           <ul>
             {meals.map((meal, index) => (
-              <li
-                key={index}
-                className="flex p-2 m-4 bg-orange-200 max-w-sm rounded cursor-pointer"
+              <Link
+                key={meal.idMeal}
+                href={`https://www.themealdb.com/meal/${meal.idMeal}`}
+                target="_blank"
+                rel="noreferrer"
               >
-                <img
-                  src={meal.strMealThumb}
-                  alt={meal.strMeal}
-                  className="w-14 h-14"
-                />
-                <Link
-                  href={`https://www.themealdb.com/meal/${meal.idMeal}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ml-3 text-lg font-bold text-amber-900 underline hover:text-blue-600"
+                <li
+                  key={index}
+                  className="flex p-2 m-2 bg-orange-200 max-w-sm rounded cursor-pointer hover:bg-blue-500 transition duration-150 ease-in-out"
                 >
-                  {meal.strMeal}
-                </Link>
-              </li>
+                  <p className="ml-1 text-lg font-bold text-amber-900 underline">
+                    {meal.strMeal}
+                  </p>
+                </li>
+              </Link>
             ))}
           </ul>
         )}
