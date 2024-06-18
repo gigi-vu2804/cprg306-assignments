@@ -1,0 +1,17 @@
+/* FirebaseAuth.css */
+.firebaseui-container {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    padding: 20px; /* Optional: Add some padding */
+  }
+  
+  .firebaseui-idp-list {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .firebaseui-idp-button {
+    width: auto; /* Optional: Adjust button width if needed */
+    margin: 10px 0; /* Optional: Adjust spacing between buttons */
+  }
+  
