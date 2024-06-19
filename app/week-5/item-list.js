@@ -6,11 +6,12 @@ export default function ItemList({ name, quantity, category }) {
   const array_items = items;
   const [items_list, setItems] = useState(array_items);
   const [displayMode, setDisplayMode] = useState("list"); // New state to control display mode
+  const [sortBy, setSortBy] = useState("name");
+
   const itemBoxStyling = "p-2 m-4 bg-orange-200 max-w-sm";
   const itemNameStyling = "text-xl font-bold text-amber-900";
   const itemDescriptionStyling = "text-sm text-amber-900 italic";
 
-  const [sortBy, setSortBy] = useState("name");
   const handleSort = (sortCriteria) => {
     setDisplayMode("list"); // Reset display mode to list
     setSortBy(sortCriteria); // Update the sortBy state
