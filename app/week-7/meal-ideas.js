@@ -19,22 +19,22 @@ const fetchMealIdeas = async (ingredient) => {
   }
 };
 
-const fetchMealIngredients = async (mealId) => {
-  try {
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
-    );
-    if (!response.ok) {
-      throw new Error("Error fetching meal ingredients");
-    }
-    const data = await response.json();
-    console.log("data: ", data);
-    return data.fullMeals || [];
-  } catch (e) {
-    console.error("Error fetching meal ingredients: ", e);
-    return [];
-  }
-};
+// const fetchMealIngredients = async (mealId) => {
+//   try {
+//     const response = await fetch(
+//       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
+//     );
+//     if (!response.ok) {
+//       throw new Error("Error fetching meal ingredients");
+//     }
+//     const data = await response.json();
+//     console.log("data: ", data);
+//     return data.meals || [];
+//   } catch (e) {
+//     console.error("Error fetching meal ingredients: ", e);
+//     return [];
+//   }
+// };
 
 export default function MealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
