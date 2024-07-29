@@ -4,7 +4,6 @@ import Item from "./item.js";
 import itemsData from "./items.json";
 import { useState } from "react";
 import MealIdeas from "./meal-ideas.js";
-import { useUserAuth } from "../_utils/auth-context.js";
 
 export default function ShoppingPage() {
   // page.js controls/manages states and passes them to the NewItem and Item components.
@@ -12,7 +11,7 @@ export default function ShoppingPage() {
   const [displayMode, setDisplayMode] = useState("list"); // New state to control display mode
   const [selectedSort, setSelectedSort] = useState("name"); // New state to control sorting
   const [selectedItemName, setSelectedItemName] = useState(""); // New state to store selected item name
-  const { user } = useUserAuth();
+
   // Create an event handler function (e.g., handleAddItem) that adds a new item to items.
   const handleAddItem = (item) => {
     setItems([...items, item]);
@@ -42,32 +41,26 @@ export default function ShoppingPage() {
         <h1 className="text-3xl text-orange-200 font-bold m-2">
           Shopping List
         </h1>
-        {user ? (
-          <div className="flex flex-row gap-2">
-            <div className="flex-1">
-              <h2 className="text-xl text-orange-200 font-bold m-2">
-                Add New Item
-              </h2>
-              <NewItem onAddItem={handleAddItem} />
-              <Item
-                items={items}
-                onSort={handleSort}
-                displayMode={displayMode}
-                setDisplayMode={setDisplayMode}
-                selectedSort={selectedSort}
-                setSelectedSort={setSelectedSort}
-                onItemSelect={handleItemSelect}
-              />
-            </div>
-            <div className="flex-1">
-              <MealIdeas ingredient={selectedItemName} />
-            </div>
+        <div className="flex flex-row gap-2">
+          <div className="flex-1">
+            <h2 className="text-xl text-orange-200 font-bold m-2">
+              Add New Item
+            </h2>
+            <NewItem onAddItem={handleAddItem} />
+            <Item
+              items={items}
+              onSort={handleSort}
+              displayMode={displayMode}
+              setDisplayMode={setDisplayMode}
+              selectedSort={selectedSort}
+              setSelectedSort={setSelectedSort}
+              onItemSelect={handleItemSelect}
+            />
           </div>
-        ) : (
-          <p className="text-orange-200">
-            Please sign in to view your shopping list.
-          </p>
-        )}
+          <div className="flex-1">
+            <MealIdeas ingredient={selectedItemName} />
+          </div>
+        </div>
       </div>
     </main>
   );
