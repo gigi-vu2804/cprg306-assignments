@@ -1,6 +1,4 @@
 // item-list.js
-"use client";
-import { useState, useEffect } from "react";
 
 export default function ItemList({
   items,
@@ -10,9 +8,10 @@ export default function ItemList({
   selectedSort,
   setSelectedSort,
   onItemSelect,
+  onRemoveItem,
 }) {
   const itemBoxStyling =
-    "p-2 m-4 bg-orange-200 max-w-sm rounded cursor-pointer round hover:bg-blue-500 transition duration-150 ease-in-out";
+    "p-2 m-4 bg-orange-200 max-w-sm rounded cursor-pointer round hover:border-4 border-red-800 transition duration-150 ease-in-out";
   const itemNameStyling = "text-xl font-bold text-amber-900";
   const itemDescriptionStyling = "text-sm text-amber-900 italic";
 
@@ -42,6 +41,15 @@ export default function ItemList({
           <div className={itemDescriptionStyling}>
             Buy {item.quantity} in {item.category}
           </div>
+          <button
+            className="m-2 p-2 bg-orange-700 text-white hover:bg-blue-500"
+            onClick={(e) => {
+              e.stopPropagation(); // Stop the event from bubbling up
+              onRemoveItem(item.id);
+            }}
+          >
+            Remove
+          </button>
         </li>
       ));
     } else {

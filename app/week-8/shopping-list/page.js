@@ -7,13 +7,12 @@ import MealIdeas from "./meal-ideas.js";
 import { useUserAuth } from "../_utils/auth-context.js";
 
 export default function ShoppingPage() {
-  // page.js controls/manages states and passes them to the NewItem and Item components.
-  const [items, setItems] = useState(itemsData);
-  const [displayMode, setDisplayMode] = useState("list"); // New state to control display mode
-  const [selectedSort, setSelectedSort] = useState("name"); // New state to control sorting
-  const [selectedItemName, setSelectedItemName] = useState(""); // New state to store selected item name
   const { user } = useUserAuth();
-  // Create an event handler function (e.g., handleAddItem) that adds a new item to items.
+  const [items, setItems] = useState(itemsData);
+  const [displayMode, setDisplayMode] = useState("list");
+  const [selectedSort, setSelectedSort] = useState("name");
+  const [selectedItemName, setSelectedItemName] = useState("");
+
   const handleAddItem = (item) => {
     setItems([...items, item]);
   };
@@ -42,6 +41,7 @@ export default function ShoppingPage() {
         <h1 className="text-3xl text-orange-200 font-bold m-2">
           Shopping List
         </h1>
+        {/* protected page content*/}
         {user ? (
           <div className="flex flex-row gap-2">
             <div className="flex-1">

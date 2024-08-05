@@ -19,14 +19,13 @@ export default function NewItem({
   const handleSubmit = (event) => {
     event.preventDefault();
     onAddItem({
-      id: Math.random().toString(36).substr(2, 9),
       name: itemName,
       quantity: parseInt(itemQuantity),
       category: itemCategory,
     });
-    // setName("");
-    // setQuantity(1);
-    // setCategory("produce");
+    setName("");
+    setQuantity(1);
+    setCategory("produce");
 
     // Log a confirmation message to the console.
     const confirmation =

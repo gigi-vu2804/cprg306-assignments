@@ -9,6 +9,7 @@ export default function Item({
   selectedSort,
   setSelectedSort,
   onItemSelect,
+  onRemoveItem,
 }) {
   return (
     <ItemList
@@ -19,6 +20,7 @@ export default function Item({
       selectedSort={selectedSort}
       setSelectedSort={setSelectedSort}
       onItemSelect={onItemSelect}
+      onRemoveItem={onRemoveItem}
     />
   );
 }
